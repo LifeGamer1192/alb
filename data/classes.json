@@ -3,6 +3,14 @@
     "id": "warrior",
     "name": "Warrior",
     "description": "近接攻撃に優れる前衛クラス",
-    "baseStats": { "hp": 100, "atk": 22, "def": 10, "spd": 5 }
+    "baseStats": { "hp": 100, "atk": 22, "def": 10, "spd": 5 },
+    "skills": ["slash", "block"]
+  },
+  {
+    "id": "rogue",
+    "name": "Rogue",
+    "description": "素早さに優れた探索者クラス",
+    "baseStats": { "hp": 85, "atk": 18, "def": 8, "spd": 12 },
+    "skills": ["slash", "dash"]
   }
 ]

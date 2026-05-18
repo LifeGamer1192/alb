@@ -5,5 +5,19 @@
     "type": "attack",
     "power": 12,
     "cooldown": 0
+  },
+  {
+    "id": "block",
+    "name": "Block",
+    "type": "defense",
+    "power": 0,
+    "cooldown": 1
+  },
+  {
+    "id": "dash",
+    "name": "Dash",
+    "type": "utility",
+    "power": 0,
+    "cooldown": 2
   }
 ]

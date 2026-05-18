@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALB Character Build</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>キャラビルド</h1>
+    </header>
+    <main>
+      <section class="card">
+        <h2>Build Your Character</h2>
+        <form id="build-form">
+          <label>
+            文化
+            <select id="culture-select"></select>
+          </label>
+          <label>
+            クラス
+            <select id="class-select"></select>
+          </label>
+          <label>
+            神
+            <select id="god-select"></select>
+          </label>
+          <button type="submit">キャラ生成</button>
+        </form>
+      </section>
+      <section class="card" id="build-result">
+        <h2>ビルド結果</h2>
+        <div class="result-grid">
+          <div>
+            <h3>ステータス</h3>
+            <ul id="stats-list"></ul>
+          </div>
+          <div>
+            <h3>スキル</h3>
+            <ul id="skills-list"></ul>
+          </div>
+        </div>
+      </section>
+      <p><a href="../index.html">ホームに戻る</a></p>
+    </main>
+  </div>
+  <script type="module" src="../js/build.js"></script>
+</body>
+</html>

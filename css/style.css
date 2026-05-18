@@ -36,6 +36,53 @@ a {
 a:hover {
   text-decoration: underline;
 }
+.card {
+  background: #1e1e2a;
+  border: 1px solid #2b2b3f;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+label {
+  display: block;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+select {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #0f172a;
+  color: #f8fafc;
+}
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  color: #0f172a;
+  background: #7dd3fc;
+  font-weight: 700;
+}
+.result-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+#stats-list,
+#skills-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+#stats-list li,
+#skills-list li {
+  margin-bottom: 10px;
+} 
 footer {
   margin-top: 32px;
   font-size: 0.9rem;

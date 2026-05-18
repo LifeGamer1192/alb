@@ -1,0 +1,8 @@
+[
+  {
+    "id": "warrior",
+    "name": "Warrior",
+    "description": "近接攻撃に優れる前衛クラス",
+    "baseStats": { "hp": 100, "atk": 22, "def": 10, "spd": 5 }
+  }
+]

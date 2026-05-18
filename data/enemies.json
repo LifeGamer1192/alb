@@ -1,0 +1,9 @@
+[
+  {
+    "id": "goblin",
+    "name": "Goblin",
+    "hp": 30,
+    "atk": 6,
+    "def": 2
+  }
+]

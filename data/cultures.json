@@ -1,0 +1,8 @@
+[
+  {
+    "id": "northern",
+    "name": "Northland",
+    "description": "冷たい大地の戦士たち",
+    "baseStats": { "hp": 110, "atk": 18, "def": 12, "spd": 4 }
+  }
+]

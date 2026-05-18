@@ -1,0 +1,8 @@
+[
+  {
+    "id": "sun",
+    "name": "Sun God",
+    "description": "光の力で味方を強化する神",
+    "bonus": { "atk": 2, "def": 1 }
+  }
+]

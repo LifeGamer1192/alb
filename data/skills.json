@@ -1,0 +1,9 @@
+[
+  {
+    "id": "slash",
+    "name": "Slash",
+    "type": "attack",
+    "power": 12,
+    "cooldown": 0
+  }
+]

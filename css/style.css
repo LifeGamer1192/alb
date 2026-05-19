@@ -373,6 +373,18 @@ footer {
   color: #0f172a;
   border-color: #7dd3fc;
 }
+.download-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #38bdf8;
+  background: #0f172a;
+  color: #7dd3fc;
+  font-weight: 700;
+  cursor: pointer;
+}
+.download-btn:hover {
+  background: #1e293b;
+}
 .summary-list {
   list-style: none;
   padding-left: 0;

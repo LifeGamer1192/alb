@@ -1,4 +1,5 @@
 import { DungeonV6 } from './dungeon-v6.js';
+import { formatLogEntry } from './v6-shared.js';
 
 const STATE_KEY = 'alb-v6-state';
 const BUILD_STORAGE_KEY = 'alb-character-build';
@@ -43,6 +44,12 @@ function clearState() {
 
 function logEvent(message, kind = '') {
   if (!state) return;
+  const last = state.log[0];
+  if (last && last.message === message && last.kind === kind) {
+    last.count = (last.count || 1) + 1;
+    last.lastTurn = state.turn;
+    return;
+  }
   state.log.unshift({ message, kind, turn: state.turn });
   if (state.log.length > MAX_LOG_ENTRIES) {
     state.log.length = MAX_LOG_ENTRIES;
@@ -368,6 +375,18 @@ function feverThreshold() {
   return state.battle.feverPrimedTurns > 0 ? FEVER_PRIMED_THRESHOLD : FEVER_CHAIN_THRESHOLD;
 }
 
+function maybeAutoDefend() {
+  const skill = state.battle.skill;
+  if (!skill || skill.type !== 'defense') return;
+  if (state.battle.cooldown > 0) return;
+  if (state.battle.shieldAmount > 0 || state.battle.counterTurns > 0) return;
+  if (state.battle.buffs.some(b => b.stat === 'def')) return;
+  const player = state.floor.player;
+  const adjacent = state.floor.enemies.some(e => e.hp > 0 && manhattan(e, player) <= 1);
+  if (!adjacent) return;
+  useDefensiveSkill();
+}
+
 function refreshFever() {
   const t = feverThreshold();
   const was = state.battle.fever;
@@ -537,9 +556,6 @@ function pickAction(pathResult) {
     if (skill.type === 'support' && (skill.effect?.kind === 'heal' || skill.effect?.kind === 'regen') && hpRatio < 0.6) {
       return { kind: 'support', target: nearest };
     }
-    if (skill.type === 'defense' && adjacentEnemy) {
-      return { kind: 'defense' };
-    }
     if (skill.type === 'support' && skill.effect?.kind === 'debuff' && nearest) {
       return { kind: 'support', target: nearest };
     }
@@ -612,6 +628,10 @@ function advanceTurn() {
   state.battle.defeatedThisTurn = 0;
 
   if (state.battle.cooldown > 0) state.battle.cooldown -= 1;
+
+  // Pre-action: defense skills auto-cast as a free side-action so they
+  // don't block the main attack/move.
+  maybeAutoDefend();
 
   const pathResult = state.floor.enemies.length
     ? DungeonV6.getNearestEnemyPath(state.floor.player, state.floor.enemies, state.floor.tiles, state.floor.width, state.floor.height)
@@ -755,7 +775,10 @@ function renderInfo() {
     <p><strong>Enemies on this floor:</strong> ${state.floor.enemies.length}</p>
     <p class="recent-log-head"><strong>Recent log</strong> · <a href="log.html">full log</a></p>
     <ul class="event-log compact">
-      ${state.log.slice(0, 6).map(e => `<li class="${e.kind}">[T${e.turn}] ${e.message}</li>`).join('')}
+      ${state.log.slice(0, 6).map(e => {
+        const f = formatLogEntry(e);
+        return `<li class="${e.kind}">[${f.turnLabel}] ${e.message}${f.countLabel}</li>`;
+      }).join('')}
     </ul>
   `;
 }

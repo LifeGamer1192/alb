@@ -1,4 +1,4 @@
-import { loadState } from './v6-shared.js';
+import { loadState, formatLogEntry, downloadLog } from './v6-shared.js';
 
 const root = document.getElementById('log-root');
 
@@ -24,18 +24,19 @@ function summarize(events) {
   let floorsCleared = 0;
   events.forEach(e => {
     const m = e.message;
+    const count = e.count || 1;
     let mm;
     if ((mm = m.match(/for (\d+) dmg/))) {
-      hits += 1;
-      damageDealt += Number(mm[1]);
+      hits += count;
+      damageDealt += Number(mm[1]) * count;
     }
     if ((mm = m.match(/Enemies dealt (\d+) damage/))) {
-      damageTaken += Number(mm[1]);
+      damageTaken += Number(mm[1]) * count;
     }
-    if (e.kind === 'evt-defeat') defeats += 1;
-    if (e.kind === 'evt-crit') crits += 1;
-    if (e.kind === 'evt-loot') loot += 1;
-    if (/Descended to Floor/.test(m)) floorsCleared += 1;
+    if (e.kind === 'evt-defeat') defeats += count;
+    if (e.kind === 'evt-crit') crits += count;
+    if (e.kind === 'evt-loot') loot += count;
+    if (/Descended to Floor/.test(m)) floorsCleared += count;
   });
   return { hits, damageDealt, damageTaken, defeats, crits, loot, floorsCleared };
 }
@@ -73,7 +74,10 @@ function render() {
   } else {
     body = `
       <ul class="event-log full">
-        ${filtered.map(e => `<li class="${e.kind}">[T${e.turn}] ${e.message}</li>`).join('') || '<li class="muted">No matching entries.</li>'}
+        ${filtered.map(e => {
+          const f = formatLogEntry(e);
+          return `<li class="${e.kind}">[${f.turnLabel}] ${e.message}${f.countLabel}</li>`;
+        }).join('') || '<li class="muted">No matching entries.</li>'}
       </ul>
     `;
   }
@@ -83,7 +87,9 @@ function render() {
       <div class="log-controls">
         <div><strong>Mode:</strong> ${modesHtml}</div>
         <div><strong>Filter:</strong> ${filtersHtml}</div>
+        <div><button id="download-log" class="download-btn">Download Log (JSON)</button></div>
       </div>
+      <p class="muted">${state.log.length} log entries (consecutive duplicates collapsed into (xN)).</p>
       ${body}
     </section>
   `;
@@ -99,6 +105,9 @@ function render() {
       currentMode = btn.dataset.mode;
       render();
     });
+  });
+  document.getElementById('download-log')?.addEventListener('click', () => {
+    downloadLog(state);
   });
 }
 

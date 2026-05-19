@@ -75,3 +75,51 @@ export function statsLine(stats) {
   if (stats.spd) parts.push(`+${stats.spd} SPD`);
   return parts.join(', ');
 }
+
+export function formatLogEntry(entry) {
+  const turnLabel = entry.lastTurn && entry.lastTurn !== entry.turn
+    ? `T${entry.turn}-${entry.lastTurn}`
+    : `T${entry.turn}`;
+  const countLabel = entry.count && entry.count > 1 ? ` (x${entry.count})` : '';
+  return { turnLabel, countLabel };
+}
+
+export function logEntryText(entry) {
+  const { turnLabel, countLabel } = formatLogEntry(entry);
+  return `[${turnLabel}] ${entry.message}${countLabel}`;
+}
+
+export function downloadLog(state) {
+  if (!state) return;
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    floor: state.currentFloorIndex + 1,
+    totalFloors: state.totalFloors,
+    turn: state.turn,
+    hp: state.battle?.currentHp,
+    maxHp: state.battle?.maxHp,
+    combo: state.battle?.combo,
+    chain: state.battle?.chain,
+    fever: !!state.battle?.fever,
+    skill: state.battle?.skill?.id || null,
+    equipment: state.equipment,
+    inventoryCount: state.inventory?.length || 0,
+    log: state.log.map(e => {
+      const out = { turn: e.turn, msg: e.message };
+      if (e.kind) out.kind = e.kind;
+      if (e.count && e.count > 1) out.count = e.count;
+      if (e.lastTurn && e.lastTurn !== e.turn) out.lastTurn = e.lastTurn;
+      return out;
+    })
+  };
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+  const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `alb-v6-log-${stamp}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 500);
+}

@@ -1,6 +1,7 @@
 const cultureSelect = document.getElementById('culture-select');
 const classSelect = document.getElementById('class-select');
 const godSelect = document.getElementById('god-select');
+const skillSelect = document.getElementById('skill-select');
 const statsList = document.getElementById('stats-list');
 const skillsList = document.getElementById('skills-list');
 const buildForm = document.getElementById('build-form');
@@ -23,6 +24,13 @@ async function loadData() {
   gods = godData;
   skills = skillData;
   skills.forEach(skill => skillMap.set(skill.id, skill));
+}
+
+function resolveSelectedSkill() {
+  if (!skillSelect) {
+    return null;
+  }
+  return skillMap.get(skillSelect.value) || null;
 }
 
 function populateSelect(selectElement, items) {
@@ -48,7 +56,7 @@ function resolveSkills(cls) {
   return cls.skills.map(skillId => skillMap.get(skillId)).filter(Boolean);
 }
 
-function renderResult(stats, skillItems) {
+function renderResult(stats, skillItems, selectedSkill = null) {
   statsList.innerHTML = '';
   Object.entries(stats).forEach(([key, value]) => {
     const li = document.createElement('li');
@@ -63,6 +71,10 @@ function renderResult(stats, skillItems) {
     skillsList.appendChild(noneItem);
     return;
   }
+  if (selectedSkill && !skillItems.some(skill => skill.id === selectedSkill.id)) {
+    skillItems.unshift(selectedSkill);
+  }
+
   skillItems.forEach(skill => {
     const li = document.createElement('li');
     li.textContent = `${skill.name} — ${skill.type} (Power ${skill.power})`;
@@ -79,7 +91,8 @@ function buildCharacter() {
   }
   const stats = mergeStats(culture, cls, god);
   const skillItems = resolveSkills(cls);
-  renderResult(stats, skillItems);
+  const selectedSkill = resolveSelectedSkill();
+  renderResult(stats, skillItems, selectedSkill);
 }
 
 buildForm.addEventListener('submit', event => {
@@ -91,6 +104,9 @@ loadData().then(() => {
   populateSelect(cultureSelect, cultures);
   populateSelect(classSelect, classes);
   populateSelect(godSelect, gods);
+  if (skillSelect) {
+    populateSelect(skillSelect, skills);
+  }
   buildCharacter();
 }).catch(error => {
   console.error('データ読み込みエラー', error);

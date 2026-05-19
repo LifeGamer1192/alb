@@ -18,12 +18,25 @@ Tagline: "Your logic keeps winning on its own."
 project-root/
 
   - CLAUDE.md          ← Project overview (this file)
-  - pages/             ← Public HTML pages
-    - index.html       Homepage / links to demos
-    - game.html        Game view (map & demo)
-    - build.html       Character Build UI
-    - logic.html       Logic Editor (placeholder)
-    - result.html      Result / stats view
+  - index.html         ← Version selector landing page
+  - v2/               ← Archived version 2 demo files
+  - v3/               ← Current version 3 demo files
+  - css/
+    - style.css
+  - js/
+    - dungeon.js
+    - character.js
+    - combat.js
+    - logic-engine.js
+    - effects.js
+    - stats.js
+    - utils.js
+  - data/
+    - cultures.json
+    - classes.json
+    - gods.json
+    - skills.json
+    - enemies.json
   - css/
     - style.css
   - js/

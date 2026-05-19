@@ -117,7 +117,9 @@ generateButton.addEventListener('click', () => {
   update('Generated a new dungeon floor.');
 });
 
-simulateButton.addEventListener('click', advanceTurn);
+if (simulateButton) {
+  simulateButton.addEventListener('click', advanceTurn);
+}
 
 floor = Dungeon.createFloor(12, 8, 4);
 update('Dungeon loaded. Advance turns to move toward enemies.');

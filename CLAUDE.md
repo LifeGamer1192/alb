@@ -1,240 +1,105 @@
-# ローグライク放置ゲーム プロジェクト概要
+# Roguelike Idle Game — Project Overview
 
-## コンセプト
+## Concept
 
-Path of Achraライクなダークファンタジーローグライク。 特徴は「自動進行（放置）」と「ビジュアルロジックエディタ」の組み合わせ。 プレイヤーはキャラビルドとロジックを設計し、あとは眺めるだけ。
+An idle roguelike inspired by Path of Achra. The core idea is combining "automated progression (idle)" with a visual logic editor: players design characters and behavior logic, then watch their builds run automatically.
 
-**キャッチコピー：自分が設計したロジックが、勝手に勝ち続ける**
+Tagline: "Your logic keeps winning on its own."
 
----
+## Tech stack
 
-## 技術スタック
+- HTML, CSS, and vanilla JavaScript (minimal libraries)
+- Sortable.js for the logic editor drag-and-drop
+- No frontend framework or build tools
+- Filenames use ASCII only
 
-- HTML / CSS / JavaScript のみ（ライブラリ最小限）  
-- Sortable.js（ロジックエディタのドラッグ&ドロップ）  
-- フレームワークなし、ビルドツールなし  
-- ファイル名はすべてASCII文字のみ
-
----
-
-## フォルダ構成
+## Repository structure
 
 project-root/
 
-  ├── CLAUDE.md          ← このファイル
+  - CLAUDE.md          ← Project overview (this file)
+  - pages/             ← Public HTML pages
+    - index.html       Homepage / links to demos
+    - game.html        Game view (map & demo)
+    - build.html       Character Build UI
+    - logic.html       Logic Editor (placeholder)
+    - result.html      Result / stats view
+  - css/
+    - style.css
+  - js/
+    - dungeon.js       Dungeon generation
+    - character.js     Character & build management
+    - combat.js        Combat engine (placeholder)
+    - logic-engine.js  Logic execution engine (placeholder)
+    - effects.js       Visual effects (placeholder)
+    - stats.js         Telemetry and stats (placeholder)
+    - utils.js         Utility helpers (placeholder)
+  - data/
+    - cultures.json
+    - classes.json
+    - gods.json
+    - skills.json
+    - enemies.json
+  - assets/
+    - images/
+    - sounds/
+
+## Game design summary
+
+1) Character Build (culture × class × god)
+   - A character is defined by a combination of culture, class, and god. Each choice modifies starting stats and available skills.
+
+2) Dungeon generation
+   - Procedural floor generation (maze/carve approach). Each floor contains enemies, items, and an optional boss. Characters follow their logic rules to act automatically.
+
+3) Logic editor (priority list)
+   - Rules are evaluated top-to-bottom; the first matching rule executes. The editor supports drag-and-drop to reorder priorities.
+   - Example rules: HP < 30% → use heal, enemy adjacent → attack, otherwise → move forward.
+
+4) Auto combat loop (per turn)
+   - Evaluate logic JSON from top to bottom
+   - Execute first matching action
+   - Process passive skill chains
+   - Update combo/chain counters and play effects
+
+5) Combo & chain system
+   - Combos: multiple skill activations in the same turn
+   - Chains: successive enemy defeats that link to the next enemy
+   - FEVER: triggered at a high chain count (e.g., chain >= 10) to boost effects and damage
+
+## UX / Visuals
+
+- Emphasize satisfying feedback: damage numbers, large combo counters, and increasingly flashy visuals as chains rise. FEVER has a dedicated effect.
+
+## Post-run statistics (example)
+
+- Clear time: 12:34
+- Total damage: 48,320
+- Max combo: 15
+- Max chain: 8
+- Most-used skill: slash (47 uses)
+
+Logic activation stats are tracked to help players refine their rules.
+
+## Implementation plan (high level)
+
+1. Dungeon generation + display (small iteration)
+2. Character Build UI
+3. Auto combat engine
+4. Logic editor UI
+5. Visual effects and combo/chain polish
+6. Result / statistics screen
+
+Estimated time: a few days for a working prototype, more to polish visuals and editor UX.
+
+## GitHub / publishing
+
+This repository is organized for public demo builds. Use the homepage pages for demos; do not include personal contact info in commits or pages.
+
+## Coding rules
+
+- Use ASCII-only filenames
+- Keep single-responsibility per file
+- Keep data in JSON files (avoid hardcoding in JS)
 
-  ├── pages/             ← HTMLファイル
-
-  │     ├── index.html       タイトル・キャラビルド画面
-
-  │     ├── game.html         ゲームメイン画面
-
-  │     ├── logic.html        ロジックエディタ画面
-
-  │     └── result.html       クリア後統計画面
-
-  ├── css/
-
-  │     └── style.css
-
-  ├── js/
-
-  │     ├── dungeon.js        ダンジョン生成
-
-  │     ├── character.js      キャラクター管理
-
-  │     ├── combat.js         戦闘エンジン
-
-  │     ├── logic-engine.js   ロジック実行エンジン
-
-  │     ├── effects.js        演出（コンボ・チェーン）
-
-  │     ├── stats.js          統計収集・表示
-
-  │     └── utils.js          共通関数
-
-  ├── data/
-
-  │     ├── cultures.json     文化データ
-
-  │     ├── classes.json      クラスデータ
-
-  │     ├── gods.json         神データ
-
-  │     ├── skills.json       スキルデータ
-
-  │     └── enemies.json      敵データ
-
-  └── assets/
-
-        ├── images/
-
-        └── sounds/
-
----
-
-## ゲームシステム設計
-
-### 1\. キャラビルド（文化 × クラス × 神）
-
-3つの組み合わせでキャラクターが決まる。 各選択がスキルセットと初期ステータスに影響する。
-
-// キャラクターデータ構造
-
-{
-
-  "culture": "northern",
-
-  "class": "warrior",
-
-  "god": "sun",
-
-  "stats": { "hp": 100, "atk": 20, "def": 10, "spd": 5 },
-
-  "skills": \["slash", "block", "solar\_burst"\]
-
-}
-
-### 2\. ダンジョン生成
-
-- プロシージャル生成（迷路アルゴリズム）  
-- 各フロアに敵・アイテム・ボスを配置  
-- キャラはロジックに従って自動移動
-
-### 3\. ロジックエディタ（優先順位リスト型）
-
-上から順に条件を評価し、最初にマッチした行動を実行。 ドラッグ&ドロップで順番を入れ替える。
-
-**UIイメージ：**
-
-\[優先1\] 条件: HP \< 30%      → 行動: 回復スキル使用
-
-\[優先2\] 条件: 敵が隣接      → 行動: 攻撃
-
-\[優先3\] 条件: 常に          → 行動: 前進
-
-**内部データ構造（JSON）：**
-
-\[
-
-  { "priority": 1, "condition": "hp\_percent \< 30", "action": "use\_skill", "skill": "heal" },
-
-  { "priority": 2, "condition": "enemy\_adjacent", "action": "attack" },
-
-  { "priority": 3, "condition": "always",          "action": "move\_forward" }
-
-\]
-
-**条件の種類：**
-
-- hp\_percent \< N（HP割合）  
-- enemy\_adjacent（敵が隣接）  
-- enemy\_count \> N（敵の数）  
-- skill\_ready: "skill\_name"（スキルが使用可能）  
-- always（常に真）
-
-**行動の種類：**
-
-- attack（通常攻撃）  
-- use\_skill（スキル使用）  
-- move\_forward（前進）  
-- move\_to\_enemy（敵に接近）  
-- flee（逃げる）
-
-### 4\. 自動戦闘エンジン
-
-毎ターン以下を実行：
-
-1. ロジックJSONを上から評価  
-2. 最初にマッチした行動を実行  
-3. スキルのパッシブ連鎖を処理  
-4. コンボ・チェーンカウンタを更新  
-5. 演出を再生
-
-### 5\. コンボ・チェーンシステム
-
-|  | 定義 | 演出 |
-| :---- | :---- | :---- |
-| コンボ | 同一ターンに複数スキルが連続発動 | カウンタ表示・エフェクト |
-| チェーン | 敵を倒すたびに次の敵へ連続接続 | 倍率上昇・FEVER突入 |
-
-**FEVER状態：** チェーン10以上で突入。全スキル強化・画面エフェクト強化。
-
----
-
-## 演出設計
-
-### パチンコ的爽快感
-
-- スキル発動ごとにダメージ数字がバーンと出る  
-- コンボ数が画面中央に大きく表示  
-- チェーンが続くほど画面が派手になる  
-- FEVER突入時に専用演出
-
-### 参考にした要素（評価順）
-
-1. コンボの視覚フィードバック（Combo Card Clashers）★★★★★  
-2. 毎ターン積み上がるチェーンループ（Flask）★★★★★  
-3. クリア後の統計・ハイスコア比較（The Last Flame）★★★★★  
-4. 放置で眺める楽しさの演出（Despot's Game）★★★★★
-
----
-
-## クリア後統計画面
-
-【ダンジョンクリア統計】
-
-クリアタイム         : 12分34秒
-
-総ダメージ           : 48,320
-
-最大コンボ           : 15
-
-最大チェーン         : 8
-
-最も使ったスキル     : slash (47回)
-
-最も倒した敵         : goblin (23体)
-
-【ロジック発動統計】
-
-HP \< 30% → 回復     : 3回発動
-
-敵が隣接 → 攻撃     : 89回発動
-
-常に → 前進         : 34回発動
-
-ロジックの発動回数が見えることで「次はこう改善しよう」という動機になる。
-
----
-
-## 実装順序
-
-| 順番 | 内容 | 目安 |
-| :---- | :---- | :---- |
-| ① | ダンジョン生成＋表示 | 半日 |
-| ② | キャラビルド画面 | 半日 |
-| ③ | オート戦闘エンジン | 半日〜1日 |
-| ④ | ロジックエディタ | 1日 |
-| ⑤ | 演出（コンボ・チェーン・FEVER） | 半日 |
-| ⑥ | 統計画面 | 半日 |
-
-**合計目安：2〜3日（Claude Code使用）**
-
----
-
-## Git / GitHub
-
-- このプロジェクトは独立したリポジトリで管理  
-- 食物連鎖シミュレーション（別リポジトリ）とは完全に分離  
-- 公開・非公開はリポジトリ単位で設定可能
-
----
-
-## コーディングルール
-
-- ファイル名はASCII文字のみ（日本語ファイル名禁止）  
-- コメントは日本語OK  
-- 1ファイル1責務（役割を混ぜない）  
-- データはJSONで外出し（jsにハードコードしない）
 

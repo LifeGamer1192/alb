@@ -13,11 +13,12 @@ let skills = [];
 const skillMap = new Map();
 
 async function loadData() {
+  const dataBase = new URL('../data/', import.meta.url);
   const [cultureData, classData, godData, skillData] = await Promise.all([
-    fetch('../data/cultures.json').then(r => r.json()),
-    fetch('../data/classes.json').then(r => r.json()),
-    fetch('../data/gods.json').then(r => r.json()),
-    fetch('../data/skills.json').then(r => r.json())
+    fetch(new URL('cultures.json', dataBase)).then(r => r.json()),
+    fetch(new URL('classes.json', dataBase)).then(r => r.json()),
+    fetch(new URL('gods.json', dataBase)).then(r => r.json()),
+    fetch(new URL('skills.json', dataBase)).then(r => r.json())
   ]);
   cultures = cultureData;
   classes = classData;
@@ -67,7 +68,7 @@ function renderResult(stats, skillItems, selectedSkill = null) {
   skillsList.innerHTML = '';
   if (skillItems.length === 0) {
     const noneItem = document.createElement('li');
-    noneItem.textContent = 'なし';
+    noneItem.textContent = 'None';
     skillsList.appendChild(noneItem);
     return;
   }
@@ -109,5 +110,5 @@ loadData().then(() => {
   }
   buildCharacter();
 }).catch(error => {
-  console.error('データ読み込みエラー', error);
+  console.error('Data load error', error);
 });

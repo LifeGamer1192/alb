@@ -2,8 +2,69 @@
   {
     "id": "goblin",
     "name": "Goblin",
-    "hp": 30,
-    "atk": 6,
-    "def": 2
+    "glyph": "g",
+    "minFloor": 1,
+    "baseStats": { "hp": 18, "atk": 6, "def": 2, "spd": 4 },
+    "aiHint": "chase",
+    "drop": [
+      { "itemId": "potion_minor", "chance": 0.25 },
+      { "itemId": "dagger", "chance": 0.05 }
+    ],
+    "description": "Frail but quick. Often hunts in groups."
+  },
+  {
+    "id": "orc",
+    "name": "Orc",
+    "glyph": "O",
+    "minFloor": 2,
+    "baseStats": { "hp": 32, "atk": 10, "def": 4, "spd": 3 },
+    "aiHint": "chase",
+    "drop": [
+      { "itemId": "potion_minor", "chance": 0.2 },
+      { "itemId": "iron_helm", "chance": 0.08 },
+      { "itemId": "short_sword", "chance": 0.06 }
+    ],
+    "description": "Bulky bruiser. Slower but hits like a hammer."
+  },
+  {
+    "id": "slime",
+    "name": "Slime",
+    "glyph": "s",
+    "minFloor": 1,
+    "baseStats": { "hp": 22, "atk": 4, "def": 6, "spd": 2 },
+    "aiHint": "regen",
+    "regen": 2,
+    "drop": [
+      { "itemId": "potion_minor", "chance": 0.35 },
+      { "itemId": "ring_of_vigor", "chance": 0.04 }
+    ],
+    "description": "Sluggish blob that mends itself between blows."
+  },
+  {
+    "id": "bat",
+    "name": "Bat",
+    "glyph": "b",
+    "minFloor": 1,
+    "baseStats": { "hp": 12, "atk": 5, "def": 1, "spd": 8 },
+    "aiHint": "fast",
+    "drop": [
+      { "itemId": "ether", "chance": 0.2 },
+      { "itemId": "amulet_swift", "chance": 0.05 }
+    ],
+    "description": "Erratic flyer. Low health but very fast."
+  },
+  {
+    "id": "mimic",
+    "name": "Mimic",
+    "glyph": "M",
+    "minFloor": 3,
+    "baseStats": { "hp": 40, "atk": 12, "def": 5, "spd": 3 },
+    "aiHint": "ambush",
+    "drop": [
+      { "itemId": "potion_major", "chance": 0.5 },
+      { "itemId": "rare_blade", "chance": 0.2 },
+      { "itemId": "ring_of_vigor", "chance": 0.15 }
+    ],
+    "description": "Treasure-shaped predator. Rare but lucrative."
   }
 ]

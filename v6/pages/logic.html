@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALB Logic Editor</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>ALB — Logic Editor</h1>
+    </header>
+    <main>
+      <section class="card">
+        <h2>Rule Priority Editor</h2>
+        <p>Create a simple priority list for in-game actions. Rules are evaluated top to bottom.</p>
+        <div class="form-row">
+          <label>
+            Condition
+            <select id="condition-select">
+              <option value="hp_below">HP below %</option>
+              <option value="enemy_nearby">Enemy nearby</option>
+              <option value="always">Always</option>
+            </select>
+          </label>
+          <label>
+            Value
+            <input id="condition-value" type="number" min="1" max="100" value="50">
+          </label>
+          <label>
+            Action
+            <select id="action-select">
+              <option value="heal">Use Heal</option>
+              <option value="attack">Attack Nearest</option>
+              <option value="move">Move Forward</option>
+            </select>
+          </label>
+          <button id="add-rule-button" type="button">Add Rule</button>
+        </div>
+      </section>
+      <section class="card">
+        <h2>Current Rules</h2>
+        <ol id="rules-list"></ol>
+        <div class="button-row">
+          <button id="save-rules-button">Save Rules</button>
+          <button id="reset-rules-button" type="button">Reset Rules</button>
+        </div>
+      </section>
+      <section class="card" id="preview-card">
+        <h2>Rule Preview</h2>
+        <p id="preview-text">Select a target state to see which action will run first.</p>
+        <div class="button-row">
+          <button id="preview-low-hp" type="button">Preview HP 30%</button>
+          <button id="preview-nearby" type="button">Preview Enemy Nearby</button>
+          <button id="preview-normal" type="button">Preview Normal</button>
+        </div>
+      </section>
+      <p><a href="../index.html" class="back-link">Back to Home</a></p>
+    </main>
+  </div>
+  <script type="module" src="../../js/logic-editor.js"></script>
+  <script src="../../js/back.js"></script>
+</body>
+</html>

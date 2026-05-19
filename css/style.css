@@ -228,3 +228,161 @@ footer {
   color: #f97316;
   font-weight: 700;
 }
+.event-log li.evt-floor {
+  color: #38bdf8;
+  font-weight: 600;
+}
+.event-log li.evt-loot {
+  color: #86efac;
+}
+.tile-stairs {
+  background: #38bdf8;
+  color: #0f172a;
+}
+.tile-treasure {
+  background: #facc15;
+  color: #1f2937;
+}
+.tile-stairs.legend-mark,
+.tile-treasure.legend-mark {
+  /* legend marks need no text */
+  color: transparent;
+}
+.page-wide {
+  max-width: 960px;
+}
+.page-nav {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}
+.page-nav a {
+  margin-right: 4px;
+}
+.auto-run {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  margin-left: auto;
+  padding-left: 12px;
+}
+.auto-label {
+  font-weight: 600;
+  color: #cbd5f5;
+}
+.auto-speed,
+.auto-toggle {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #f8fafc;
+  font-weight: 600;
+  cursor: pointer;
+}
+.auto-speed.selected {
+  background: #7dd3fc;
+  color: #0f172a;
+}
+.auto-toggle.on {
+  background: #f97316;
+  color: #1f2937;
+}
+.status-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+.status-table th,
+.status-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #2b2b3f;
+  text-align: left;
+  vertical-align: top;
+}
+.status-table th {
+  font-size: 0.85rem;
+  color: #cbd5f5;
+}
+.slot-name {
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.muted {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+.item-name {
+  font-weight: 600;
+}
+.rarity-common {
+  color: #e2e8f0;
+}
+.rarity-rare {
+  color: #fcd34d;
+}
+.rarity-epic {
+  color: #c084fc;
+}
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 1px 6px;
+  margin-left: 6px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+.inventory-table button {
+  padding: 4px 10px;
+  font-size: 0.85rem;
+}
+.event-log.full {
+  max-height: 480px;
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+}
+.event-log.full li {
+  padding: 6px 8px;
+  border-bottom: 1px solid #2b2b3f;
+  font-size: 0.9rem;
+}
+.event-log.compact {
+  max-height: 140px;
+}
+.log-controls {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.filter-btn,
+.mode-btn {
+  margin: 0 4px 4px 0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #f8fafc;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.filter-btn.selected,
+.mode-btn.selected {
+  background: #7dd3fc;
+  color: #0f172a;
+  border-color: #7dd3fc;
+}
+.summary-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 0;
+}
+.summary-list li {
+  padding: 4px 0;
+  border-bottom: 1px solid #2b2b3f;
+}
+.recent-log-head {
+  margin-top: 12px;
+  margin-bottom: 4px;
+}

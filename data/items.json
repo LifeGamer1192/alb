@@ -1,0 +1,155 @@
+[
+  {
+    "id": "dagger",
+    "name": "Dagger",
+    "slot": "weapon",
+    "rarity": "common",
+    "stats": { "atk": 3 },
+    "minFloor": 1,
+    "description": "Light blade. +3 ATK."
+  },
+  {
+    "id": "short_sword",
+    "name": "Short Sword",
+    "slot": "weapon",
+    "rarity": "common",
+    "stats": { "atk": 6 },
+    "minFloor": 2,
+    "description": "Reliable one-handed sword. +6 ATK."
+  },
+  {
+    "id": "rare_blade",
+    "name": "Sunfire Blade",
+    "slot": "weapon",
+    "rarity": "rare",
+    "stats": { "atk": 10, "spd": 1 },
+    "minFloor": 3,
+    "description": "Glowing blade. +10 ATK, +1 SPD."
+  },
+  {
+    "id": "battle_axe",
+    "name": "Battle Axe",
+    "slot": "weapon",
+    "rarity": "common",
+    "stats": { "atk": 8 },
+    "minFloor": 2,
+    "description": "Heavy axe favoured by berserkers. +8 ATK."
+  },
+  {
+    "id": "wizard_wand",
+    "name": "Wizard Wand",
+    "slot": "weapon",
+    "rarity": "rare",
+    "stats": { "atk": 7, "spd": 2 },
+    "minFloor": 2,
+    "description": "Channels arcane focus. +7 ATK, +2 SPD."
+  },
+  {
+    "id": "leather_armor",
+    "name": "Leather Armor",
+    "slot": "armor",
+    "rarity": "common",
+    "stats": { "def": 4, "hp": 10 },
+    "minFloor": 1,
+    "description": "Basic protection. +4 DEF, +10 HP."
+  },
+  {
+    "id": "chainmail",
+    "name": "Chainmail",
+    "slot": "armor",
+    "rarity": "common",
+    "stats": { "def": 7, "hp": 15 },
+    "minFloor": 2,
+    "description": "Layered rings. +7 DEF, +15 HP."
+  },
+  {
+    "id": "iron_helm",
+    "name": "Iron Helm",
+    "slot": "armor",
+    "rarity": "common",
+    "stats": { "def": 3, "hp": 8 },
+    "minFloor": 2,
+    "description": "Sturdy helm. +3 DEF, +8 HP."
+  },
+  {
+    "id": "dragon_plate",
+    "name": "Dragon Plate",
+    "slot": "armor",
+    "rarity": "rare",
+    "stats": { "def": 12, "hp": 30 },
+    "minFloor": 4,
+    "description": "Scales of an old wyrm. +12 DEF, +30 HP."
+  },
+  {
+    "id": "amulet_swift",
+    "name": "Amulet of Swiftness",
+    "slot": "accessory",
+    "rarity": "common",
+    "stats": { "spd": 3 },
+    "minFloor": 1,
+    "description": "Light at the throat. +3 SPD."
+  },
+  {
+    "id": "ring_of_vigor",
+    "name": "Ring of Vigor",
+    "slot": "accessory",
+    "rarity": "rare",
+    "stats": { "hp": 25, "def": 2 },
+    "minFloor": 2,
+    "description": "Throbs warmly. +25 HP, +2 DEF."
+  },
+  {
+    "id": "lucky_charm",
+    "name": "Lucky Charm",
+    "slot": "accessory",
+    "rarity": "rare",
+    "stats": { "atk": 2, "spd": 2 },
+    "minFloor": 3,
+    "description": "Edges feel favoured. +2 ATK, +2 SPD."
+  },
+  {
+    "id": "potion_minor",
+    "name": "Minor Potion",
+    "slot": "consumable",
+    "rarity": "common",
+    "use": { "kind": "heal", "amount": 25 },
+    "minFloor": 1,
+    "description": "Restores 25 HP."
+  },
+  {
+    "id": "potion_major",
+    "name": "Major Potion",
+    "slot": "consumable",
+    "rarity": "rare",
+    "use": { "kind": "heal", "amount": 60 },
+    "minFloor": 2,
+    "description": "Restores 60 HP."
+  },
+  {
+    "id": "ether",
+    "name": "Ether",
+    "slot": "consumable",
+    "rarity": "common",
+    "use": { "kind": "cooldownReset" },
+    "minFloor": 1,
+    "description": "Resets your active skill cooldown."
+  },
+  {
+    "id": "elixir",
+    "name": "Elixir",
+    "slot": "consumable",
+    "rarity": "rare",
+    "use": { "kind": "fullRestore" },
+    "minFloor": 3,
+    "description": "Full HP restore + clears debuffs."
+  },
+  {
+    "id": "smoke_bomb",
+    "name": "Smoke Bomb",
+    "slot": "consumable",
+    "rarity": "common",
+    "use": { "kind": "shield", "amount": 20, "duration": 2 },
+    "minFloor": 2,
+    "description": "Briefly cloaks you. Shield 20 for 2 turns."
+  }
+]

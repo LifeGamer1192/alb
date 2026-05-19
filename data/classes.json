@@ -4,13 +4,41 @@
     "name": "Warrior",
     "description": "近接攻撃に優れる前衛クラス",
     "baseStats": { "hp": 100, "atk": 22, "def": 10, "spd": 5 },
-    "skills": ["slash", "block"]
+    "skills": ["slash", "heavy_strike", "block", "shield_wall", "battle_cry", "toughness"]
   },
   {
     "id": "rogue",
     "name": "Rogue",
     "description": "素早さに優れた探索者クラス",
     "baseStats": { "hp": 85, "atk": 18, "def": 8, "spd": 12 },
-    "skills": ["slash", "dash"]
+    "skills": ["slash", "flurry", "piercing_thrust", "dash", "blink", "swiftness"]
+  },
+  {
+    "id": "ranger",
+    "name": "Ranger",
+    "description": "遠距離からの精密射撃を得意とする弓使い",
+    "baseStats": { "hp": 80, "atk": 17, "def": 7, "spd": 10 },
+    "skills": ["arrow_shot", "rapid_fire", "poison_dart", "focus", "swiftness", "weaken"]
+  },
+  {
+    "id": "mage",
+    "name": "Mage",
+    "description": "魔法で広範囲を制圧する術者",
+    "baseStats": { "hp": 70, "atk": 24, "def": 5, "spd": 7 },
+    "skills": ["fireball", "ice_lance", "lightning_bolt", "heal", "regeneration", "intimidate"]
+  },
+  {
+    "id": "berserker",
+    "name": "Berserker",
+    "description": "高火力と引き換えに守りを捨てる狂戦士",
+    "baseStats": { "hp": 110, "atk": 26, "def": 6, "spd": 6 },
+    "skills": ["heavy_strike", "flurry", "battle_cry", "berserker", "chain_master", "fever_call"]
+  },
+  {
+    "id": "duelist",
+    "name": "Duelist",
+    "description": "受けと返しを両立する一対一の達人",
+    "baseStats": { "hp": 90, "atk": 19, "def": 12, "spd": 9 },
+    "skills": ["piercing_thrust", "parry", "iron_skin", "focus", "combo_finisher", "dash"]
   }
 ]

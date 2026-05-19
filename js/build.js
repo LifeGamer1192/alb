@@ -78,6 +78,108 @@ function populateSelect(selectElement, items) {
   });
 }
 
+function populateSkillSelect(selectElement, skillItems) {
+  selectElement.innerHTML = '';
+  const groups = new Map();
+  skillItems.forEach(skill => {
+    const type = skill.type || 'other';
+    if (!groups.has(type)) {
+      groups.set(type, []);
+    }
+    groups.get(type).push(skill);
+  });
+  const typeOrder = ['attack', 'defense', 'support', 'utility', 'passive', 'other'];
+  typeOrder.forEach(type => {
+    const items = groups.get(type);
+    if (!items || items.length === 0) {
+      return;
+    }
+    const optgroup = document.createElement('optgroup');
+    optgroup.label = type.charAt(0).toUpperCase() + type.slice(1);
+    items.forEach(skill => {
+      const option = document.createElement('option');
+      option.value = skill.id;
+      const cdLabel = skill.cooldown ? ` · CD ${skill.cooldown}` : '';
+      option.textContent = `${skill.name} (${skill.category || skill.type}${cdLabel})`;
+      optgroup.append(option);
+    });
+    selectElement.append(optgroup);
+  });
+}
+
+function describeEffect(effect) {
+  if (!effect) {
+    return '';
+  }
+  switch (effect.kind) {
+    case 'heal':
+      return `Heal ${effect.amount} HP`;
+    case 'regen':
+      return `Regen ${effect.amount}/turn x${effect.duration}`;
+    case 'shield':
+      return `Shield ${effect.amount} for ${effect.duration} turn(s)`;
+    case 'buff':
+      return `+${effect.amount} ${effect.stat?.toUpperCase()} for ${effect.duration} turn(s)`;
+    case 'debuff':
+      return `-${effect.amount} target ${effect.stat?.toUpperCase()} for ${effect.duration} turn(s)`;
+    case 'dot':
+      return `DoT ${effect.amount}/turn x${effect.duration}`;
+    case 'slow':
+      return `Slow -${effect.amount} SPD x${effect.duration}`;
+    case 'counter':
+      return `Counter ${Math.round(effect.amount * 100)}% x${effect.duration}`;
+    case 'move':
+      return `+${effect.amount} move`;
+    case 'teleport':
+      return `Teleport up to ${effect.amount}`;
+    case 'feverPrime':
+      return `Lowers FEVER threshold x${effect.duration}`;
+    default:
+      return effect.kind;
+  }
+}
+
+function describePassive(passive) {
+  if (!passive) {
+    return '';
+  }
+  const parts = [];
+  if (passive.stat && typeof passive.amount === 'number') {
+    parts.push(`+${passive.amount} ${passive.stat.toUpperCase()}`);
+  }
+  if (typeof passive.defPenalty === 'number') {
+    parts.push(`-${passive.defPenalty} DEF`);
+  }
+  if (typeof passive.chainBonus === 'number') {
+    parts.push(`+${Math.round(passive.chainBonus * 100)}% per chain`);
+  }
+  if (typeof passive.comboBonus === 'number') {
+    parts.push(`combo>=${passive.comboThreshold ?? 0} -> +${Math.round(passive.comboBonus * 100)}%`);
+  }
+  return parts.join(', ');
+}
+
+function describeSkill(skill) {
+  const segments = [];
+  segments.push(`${skill.name} — ${skill.category || skill.type}`);
+  if (skill.power) {
+    const hitsLabel = skill.hits && skill.hits > 1 ? ` x${skill.hits}` : '';
+    segments.push(`Power ${skill.power}${hitsLabel}`);
+  }
+  if (skill.cooldown) {
+    segments.push(`CD ${skill.cooldown}`);
+  }
+  const effectText = describeEffect(skill.effect);
+  if (effectText) {
+    segments.push(effectText);
+  }
+  const passiveText = describePassive(skill.passive);
+  if (passiveText) {
+    segments.push(passiveText);
+  }
+  return segments.join(' · ');
+}
+
 function mergeStats(culture, cls, god) {
   return {
     hp: culture.baseStats.hp + cls.baseStats.hp + (god.bonus.hp || 0),
@@ -112,7 +214,12 @@ function renderResult(stats, skillItems, selectedSkill = null) {
 
   skillItems.forEach(skill => {
     const li = document.createElement('li');
-    li.textContent = `${skill.name} — ${skill.type} (Power ${skill.power})`;
+    const summary = describeSkill(skill);
+    if (skill.description) {
+      li.innerHTML = `<strong>${summary}</strong><br><span class="skill-desc">${skill.description}</span>`;
+    } else {
+      li.textContent = summary;
+    }
     skillsList.appendChild(li);
   });
 }
@@ -149,7 +256,7 @@ loadData().then(() => {
   populateSelect(classSelect, classes);
   populateSelect(godSelect, gods);
   if (skillSelect) {
-    populateSelect(skillSelect, skills);
+    populateSkillSelect(skillSelect, skills);
   }
 
   const savedBuild = loadSavedBuild();

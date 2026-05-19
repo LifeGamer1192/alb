@@ -180,3 +180,55 @@ footer {
   font-size: 0.9rem;
   color: #9ca3af;
 }
+.skill-desc {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #c7d2fe;
+  margin-top: 2px;
+}
+.combo-line,
+.chain-line {
+  font-weight: 700;
+}
+.combo-line.active {
+  color: #fcd34d;
+}
+.chain-line.active {
+  color: #fb7185;
+}
+.fever-line {
+  color: #f97316;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+.cooldown-line {
+  color: #93c5fd;
+}
+.passive-line {
+  color: #86efac;
+}
+.event-log {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0 0;
+  max-height: 180px;
+  overflow-y: auto;
+  border-top: 1px solid #2b2b3f;
+  padding-top: 8px;
+}
+.event-log li {
+  font-size: 0.9rem;
+  padding: 4px 0;
+  border-bottom: 1px dashed #2b2b3f;
+}
+.event-log li.evt-crit {
+  color: #fcd34d;
+}
+.event-log li.evt-defeat {
+  color: #fb7185;
+}
+.event-log li.evt-fever {
+  color: #f97316;
+  font-weight: 700;
+}

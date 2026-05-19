@@ -3,7 +3,7 @@
 This repository contains a small demo project for an auto-battler / idle roguelike.
 
 - Demo site: https://lifegamer1192.github.io/alb/
-- Public version: v2 (Character Build, Game Map placeholder, Logic Editor placeholder)
+- Public version: v3 (Character Build, Dungeon Generation and Simulation, Logic Editor placeholder)
 
 Structure:
 

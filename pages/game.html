@@ -1,28 +1,38 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ALB Game</title>
+  <title>ALB Dungeon Simulation</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <div class="page">
     <header>
-      <h1>ALB — Game</h1>
+      <h1>ALB — Dungeon Simulation</h1>
     </header>
     <main>
       <section class="card">
-        <h2>Dungeon Generation</h2>
-        <p>This page shows a randomly generated dungeon.</p>
-        <button id="generate-button">Regenerate Dungeon</button>
+        <h2>Dungeon Simulation</h2>
+        <p>Generate a dungeon floor, then advance turns to move the player toward the nearest enemy.</p>
+        <div class="button-row">
+          <button id="generate-button">Generate Dungeon</button>
+          <button id="simulate-button" type="button">Advance Turn</button>
+        </div>
       </section>
       <section class="card">
         <h2>Floor View</h2>
         <div id="map-root" class="dungeon-grid"></div>
+        <div class="legend-list">
+          <div class="legend-item"><span class="tile tile-player legend-mark"></span> Player</div>
+          <div class="legend-item"><span class="tile tile-enemy legend-mark"></span> Enemy</div>
+          <div class="legend-item"><span class="tile tile-path legend-mark"></span> Path</div>
+          <div class="legend-item"><span class="tile tile-floor legend-mark"></span> Floor</div>
+          <div class="legend-item"><span class="tile tile-wall legend-mark"></span> Wall</div>
+        </div>
       </section>
       <section class="card" id="map-info"></section>
-      <p><a href="../index.html" class="back-link">Back</a></p>
+      <p><a href="../index.html" class="back-link">Back to Home</a></p>
     </main>
     <script src="../js/back.js"></script>
     <script type="module" src="../js/game.js"></script>

@@ -138,13 +138,42 @@ button {
   background: #162447;
   border: 1px solid #1f2e4d;
 }
-.tile-player {
+..tile-player {
   background: #10b981;
   color: #ffffff;
 }
 .tile-enemy {
   background: #ef4444;
   color: #ffffff;
+}
+.tile-path {
+  background: #4338ca;
+  border: 1px solid #6366f1;
+}
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+.legend-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+.legend-mark {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
 }
 footer {
   margin-top: 32px;

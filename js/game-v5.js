@@ -472,18 +472,17 @@ function renderDungeon(floor) {
       tile.className = 'tile';
       const tileType = floor.tiles[y][x];
       tile.classList.add(tileType === 'floor' ? 'tile-floor' : 'tile-wall');
-      if (pathSet.has(posKey({ x, y })) && tileType === 'floor') {
+      const isPlayer = floor.player.x === x && floor.player.y === y;
+      const enemy = !isPlayer ? floor.enemies.find(e => e.x === x && e.y === y) : null;
+      if (pathSet.has(posKey({ x, y })) && tileType === 'floor' && !isPlayer && !enemy) {
         tile.classList.add('tile-path');
       }
-      if (floor.player.x === x && floor.player.y === y) {
+      if (isPlayer) {
         tile.classList.add('tile-player');
         tile.textContent = 'P';
-      } else {
-        const enemy = floor.enemies.find(e => e.x === x && e.y === y);
-        if (enemy) {
-          tile.classList.add('tile-enemy');
-          tile.textContent = enemy.hp > 0 ? 'E' : 'X';
-        }
+      } else if (enemy) {
+        tile.classList.add('tile-enemy');
+        tile.textContent = enemy.hp > 0 ? 'E' : 'X';
       }
       mapRoot.appendChild(tile);
     }

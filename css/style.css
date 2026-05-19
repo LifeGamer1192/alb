@@ -138,10 +138,6 @@ button {
   background: #162447;
   border: 1px solid #1f2e4d;
 }
-..tile-player {
-  background: #10b981;
-  color: #ffffff;
-}
 .tile-enemy {
   background: #ef4444;
   color: #ffffff;

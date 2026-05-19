@@ -92,10 +92,6 @@ button {
 .tile-floor {
   background: #1f2937;
 }
-.tile-player {
-  background: #fbbf24;
-  color: #111827;
-}
 .tile-enemy {
   background: #ef4444;
   color: #ffffff;
@@ -145,6 +141,10 @@ button {
 .tile-path {
   background: #4338ca;
   border: 1px solid #6366f1;
+}
+.tile-player {
+  background: #fbbf24;
+  color: #111827;
 }
 .button-row {
   display: flex;

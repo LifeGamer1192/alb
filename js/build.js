@@ -6,11 +6,45 @@ const statsList = document.getElementById('stats-list');
 const skillsList = document.getElementById('skills-list');
 const buildForm = document.getElementById('build-form');
 
+const BUILD_STORAGE_KEY = 'alb-character-build';
+
 let cultures = [];
 let classes = [];
 let gods = [];
 let skills = [];
 const skillMap = new Map();
+
+function loadSavedBuild() {
+  try {
+    const raw = localStorage.getItem(BUILD_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (error) {
+    return null;
+  }
+}
+
+function saveBuildData(buildData) {
+  localStorage.setItem(BUILD_STORAGE_KEY, JSON.stringify(buildData));
+}
+
+function applySavedBuild(savedBuild) {
+  if (!savedBuild) {
+    return;
+  }
+
+  if (cultureSelect && savedBuild.cultureId) {
+    cultureSelect.value = savedBuild.cultureId;
+  }
+  if (classSelect && savedBuild.classId) {
+    classSelect.value = savedBuild.classId;
+  }
+  if (godSelect && savedBuild.godId) {
+    godSelect.value = savedBuild.godId;
+  }
+  if (skillSelect && savedBuild.skillId) {
+    skillSelect.value = savedBuild.skillId;
+  }
+}
 
 async function loadData() {
   const dataBase = new URL('../data/', import.meta.url);
@@ -94,6 +128,15 @@ function buildCharacter() {
   const skillItems = resolveSkills(cls);
   const selectedSkill = resolveSelectedSkill();
   renderResult(stats, skillItems, selectedSkill);
+
+  saveBuildData({
+    cultureId: culture.id,
+    classId: cls.id,
+    godId: god.id,
+    skillId: selectedSkill?.id || null,
+    stats,
+    skill: selectedSkill ? { ...selectedSkill } : null
+  });
 }
 
 buildForm.addEventListener('submit', event => {
@@ -108,6 +151,9 @@ loadData().then(() => {
   if (skillSelect) {
     populateSelect(skillSelect, skills);
   }
+
+  const savedBuild = loadSavedBuild();
+  applySavedBuild(savedBuild);
   buildCharacter();
 }).catch(error => {
   console.error('Data load error', error);

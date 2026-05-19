@@ -850,7 +850,21 @@ function bindButtons() {
     advanceTurn();
   });
   window.addEventListener('beforeunload', () => {
-    stopAutoRun();
+    // Surgical update: only clear the autoRun.active flag in the persisted
+    // state so a refresh does not auto-resume. Do not call saveState()
+    // here — that would overwrite externally edited fields (the in-memory
+    // `state` is a snapshot from boot/last turn and may be stale).
+    if (autoRunHandle) clearInterval(autoRunHandle);
+    autoRunHandle = null;
+    try {
+      const stored = JSON.parse(localStorage.getItem(STATE_KEY));
+      if (stored && stored.autoRun?.active) {
+        stored.autoRun.active = false;
+        localStorage.setItem(STATE_KEY, JSON.stringify(stored));
+      }
+    } catch (e) {
+      // ignore
+    }
   });
 }
 

@@ -12,10 +12,19 @@
       <h1>ALB Game</h1>
     </header>
     <main>
-      <p>ここはゲーム本体の表示領域になります。</p>
-      <p>v1ではページ構成と公開テストを優先しています。</p>
+      <section class="card">
+        <h2>ダンジョン生成</h2>
+        <p>このページではランダム生成されたダンジョンを表示します。</p>
+        <button id="generate-button">ダンジョン再生成</button>
+      </section>
+      <section class="card">
+        <h2>フロア表示</h2>
+        <div id="map-root" class="dungeon-grid"></div>
+      </section>
+      <section class="card" id="map-info"></section>
       <p><a href="index.html">戻る</a></p>
     </main>
+    <script type="module" src="../js/game.js"></script>
   </div>
 </body>
 </html>

@@ -519,6 +519,14 @@ function pickupTreasure() {
 }
 
 function checkStairs() {
+  // Final floor has no stairs by design; completing it = clearing all enemies there.
+  if (state.currentFloorIndex >= TOTAL_FLOORS - 1 && state.floor.enemies.length === 0) {
+    state.runCompleted = true;
+    logEvent('You cleared the dungeon!', 'evt-fever');
+    saveState();
+    stopAutoRun();
+    return;
+  }
   const stairs = state.floor.stairs;
   if (!stairs) return;
   if (state.floor.player.x !== stairs.x || state.floor.player.y !== stairs.y) return;

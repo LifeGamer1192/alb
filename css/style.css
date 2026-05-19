@@ -68,6 +68,38 @@ button {
   background: #7dd3fc;
   font-weight: 700;
 }
+.dungeon-grid {
+  display: grid;
+  gap: 2px;
+  padding: 12px;
+  background: #0f172a;
+  border-radius: 12px;
+}
+.tile {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: transparent;
+  border-radius: 6px;
+}
+.tile-wall {
+  background: #0b1120;
+}
+.tile-floor {
+  background: #1f2937;
+}
+.tile-player {
+  background: #fbbf24;
+  color: #111827;
+}
+.tile-enemy {
+  background: #ef4444;
+  color: #ffffff;
+}
 .result-grid {
   display: grid;
   gap: 18px;
@@ -82,7 +114,38 @@ button {
 #stats-list li,
 #skills-list li {
   margin-bottom: 10px;
-} 
+}
+.dungeon-grid {
+  display: grid;
+  gap: 2px;
+  margin-top: 16px;
+}
+.tile {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.tile-wall {
+  background: #0f172a;
+  border: 1px solid #0f172a;
+}
+.tile-floor {
+  background: #162447;
+  border: 1px solid #1f2e4d;
+}
+.tile-player {
+  background: #10b981;
+  color: #ffffff;
+}
+.tile-enemy {
+  background: #ef4444;
+  color: #ffffff;
+}
 footer {
   margin-top: 32px;
   font-size: 0.9rem;

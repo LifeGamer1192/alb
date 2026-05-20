@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALB Logic Editor (v7)</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="page page-wide">
+    <header>
+      <h1>ALB — Logic Editor (v7)</h1>
+      <nav class="page-nav">
+        <a href="game.html">Game</a> ·
+        <a href="build.html">Build</a> ·
+        <a href="status.html">Status</a> ·
+        <a href="inventory.html">Inventory</a> ·
+        <a href="log.html">Log</a> ·
+        <a href="../index.html">Home</a>
+      </nav>
+    </header>
+    <main>
+      <section class="card">
+        <h2>How it works</h2>
+        <p>Each combat turn the engine checks these rules top to bottom. The first rule whose condition is true decides the action. Drag a rule to change its priority.</p>
+        <p class="muted">Tip: a heal or support skill should be gated behind a condition (e.g. <em>HP % &lt; 40 &rarr; Use skill</em>) so it does not fire wastefully.</p>
+      </section>
+      <section class="card">
+        <h2>Add Rule</h2>
+        <div class="logic-form">
+          <label>Condition
+            <select id="condition-select"></select>
+          </label>
+          <label id="comparator-field">Comparator
+            <select id="comparator-select"></select>
+          </label>
+          <label id="value-field">Value
+            <input id="value-input" type="number" value="40">
+          </label>
+          <label>Action
+            <select id="action-select"></select>
+          </label>
+          <button id="add-rule-button" type="button">Add Rule</button>
+        </div>
+      </section>
+      <section class="card">
+        <h2>Rule Priority</h2>
+        <ol id="rules-list" class="logic-rule-list"></ol>
+        <div class="button-row">
+          <button id="reset-rules-button" type="button">Reset to defaults</button>
+        </div>
+        <p id="editor-status" class="muted"></p>
+      </section>
+      <section class="card">
+        <h2>Preview</h2>
+        <p class="muted">Which rule fires for each situation:</p>
+        <ul id="preview-list" class="logic-preview"></ul>
+      </section>
+      <p><a href="game.html" class="back-link">Back to Game</a></p>
+    </main>
+    <script type="module" src="../../js/logic-v7.js"></script>
+  </div>
+</body>
+</html>

@@ -398,3 +398,111 @@ footer {
   margin-top: 12px;
   margin-bottom: 4px;
 }
+
+/* v7 logic editor */
+.logic-form {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.logic-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  gap: 4px;
+}
+.logic-form button {
+  padding: 8px 16px;
+}
+.logic-rule-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: none;
+}
+.logic-rule-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #1e293b;
+  cursor: grab;
+}
+.logic-rule-item.empty {
+  color: #94a3b8;
+  cursor: default;
+  justify-content: center;
+}
+.logic-rule-item.dragging {
+  opacity: 0.5;
+}
+.logic-rule-item.drag-over {
+  border-color: #7dd3fc;
+  box-shadow: 0 0 0 1px #7dd3fc inset;
+}
+.drag-handle {
+  color: #64748b;
+  font-weight: 700;
+  letter-spacing: -1px;
+  cursor: grab;
+}
+.rule-order {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.rule-text {
+  flex: 1;
+}
+.fire-count {
+  font-size: 0.78rem;
+  color: #7dd3fc;
+  font-variant-numeric: tabular-nums;
+}
+.rule-remove {
+  padding: 3px 10px;
+  font-size: 0.8rem;
+}
+.logic-preview {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+.logic-preview li {
+  padding: 6px 0;
+  border-bottom: 1px solid #2b2b3f;
+  font-size: 0.9rem;
+}
+.logic-fire-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0;
+}
+.logic-fire-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 5px 8px;
+  border-bottom: 1px solid #2b2b3f;
+  font-size: 0.88rem;
+}
+.logic-fire-list li.just-fired {
+  background: #1e293b;
+  border-radius: 6px;
+  border-bottom-color: transparent;
+}
+.logic-fire-list li.just-fired .rule-text {
+  color: #7dd3fc;
+  font-weight: 600;
+}

@@ -215,6 +215,7 @@ function startNewRun() {
     turn: 1,
     autoRun: { active: false, speed: 1 },
     ruleStats: {},
+    runStats: { totalDamage: 0, maxCombo: 0, maxChain: 0 },
     runCompleted: false,
     runFailed: false
   };
@@ -237,6 +238,7 @@ function loadOrInitState() {
     if (!state.inventory) state.inventory = [];
     if (!state.autoRun) state.autoRun = { active: false, speed: 1 };
     if (!state.ruleStats) state.ruleStats = {};
+    if (!state.runStats) state.runStats = { totalDamage: 0, maxCombo: 0, maxChain: 0 };
     return;
   }
   startNewRun();
@@ -278,6 +280,10 @@ function applyDamageToEnemy(enemy, rawDamage, label = 'hit') {
   enemy.hp -= damage;
   state.battle.combo += 1;
   state.battle.didOffenseThisTurn = true;
+  state.runStats.totalDamage += damage;
+  if (state.battle.combo > state.runStats.maxCombo) {
+    state.runStats.maxCombo = state.battle.combo;
+  }
   const isCrit = multiplier >= 1.5;
   pendingEffects.push({
     kind: 'damage',
@@ -291,6 +297,9 @@ function applyDamageToEnemy(enemy, rawDamage, label = 'hit') {
   if (enemy.hp <= 0) {
     state.battle.chain += 1;
     state.battle.defeatedThisTurn += 1;
+    if (state.battle.chain > state.runStats.maxChain) {
+      state.runStats.maxChain = state.battle.chain;
+    }
     logEvent(`${label} defeated ${enemy.name} for ${damage} dmg (combo ${state.battle.combo}, chain ${state.battle.chain})`, 'evt-defeat');
     rollDrops(enemy);
     return { defeated: true, damage };

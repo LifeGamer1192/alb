@@ -13,22 +13,18 @@
       <nav class="page-nav">
         <a href="game.html">Game</a> ·
         <a href="logic.html">Logic</a> ·
+        <a href="status.html">Status</a> ·
+        <a href="inventory.html">Inventory</a> ·
+        <a href="log.html">Log</a> ·
         <a href="../index.html">Home</a>
       </nav>
     </header>
     <main>
-      <p>This page shows the summary for the current run.</p>
-      <section class="card">
-        <h2>Run Summary</h2>
-        <ul>
-          <li>Floor cleared: 0</li>
-          <li>Total damage: 0</li>
-          <li>Max combo: 0</li>
-          <li>Rules used: None</li>
-        </ul>
-      </section>
+      <p>This page shows the summary for your most recent run.</p>
+      <div id="result-root"></div>
       <p><a href="../index.html" class="back-link">Back to Home</a></p>
     </main>
+    <script type="module" src="../../js/result-v8.js"></script>
   </div>
 </body>
 </html>

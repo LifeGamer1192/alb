@@ -597,3 +597,66 @@ footer {
   40% { transform: scale(1.6); }
   100% { transform: scale(1); }
 }
+
+/* v9 run history */
+.outcome-cleared {
+  color: #86efac;
+  font-weight: 700;
+}
+.outcome-failed {
+  color: #fb7185;
+  font-weight: 700;
+}
+.record-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 1px 7px;
+  margin-left: 6px;
+  border-radius: 999px;
+  background: #422006;
+  color: #fbbf24;
+  border: 1px solid #b45309;
+}
+.best-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin-top: 8px;
+}
+.best-card {
+  background: #0f172a;
+  border: 1px solid #2b2b3f;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.best-card .best-label {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+.best-card .best-value {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #7dd3fc;
+  margin-top: 2px;
+}
+.history-table {
+  font-size: 0.9rem;
+}
+.history-table td.num,
+.history-table th.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.history-actions {
+  margin-top: 16px;
+}
+.danger-btn {
+  background: #1e293b;
+  color: #fca5a5;
+  border: 1px solid #7f1d1d;
+}
+.danger-btn.armed {
+  background: #7f1d1d;
+  color: #ffffff;
+}

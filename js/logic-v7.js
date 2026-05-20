@@ -29,14 +29,14 @@ const PREVIEW_SCENARIOS = [
 ];
 
 function loadRules() {
+  const raw = localStorage.getItem(RULE_KEY);
+  if (raw === null) return defaultRules();
   try {
-    const raw = localStorage.getItem(RULE_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed) && parsed.length) return parsed;
-    }
+    const parsed = JSON.parse(raw);
+    // Respect a saved array as-is, even when empty.
+    if (Array.isArray(parsed)) return parsed;
   } catch (e) {
-    // fall through to defaults
+    // corrupt data — fall through to defaults
   }
   return defaultRules();
 }

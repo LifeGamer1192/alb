@@ -37,14 +37,16 @@ function loadStored(key) {
 }
 
 function loadRules() {
+  const raw = localStorage.getItem(RULE_KEY);
+  if (raw === null) return LogicV7.defaultRules();
   try {
-    const raw = localStorage.getItem(RULE_KEY);
-    if (raw) {
-      const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed) && parsed.length) return parsed;
-    }
+    const parsed = JSON.parse(raw);
+    // A saved array is respected as-is, even when empty (the player
+    // explicitly cleared their logic). Only missing or corrupt data
+    // falls back to the default ruleset.
+    if (Array.isArray(parsed)) return parsed;
   } catch (e) {
-    // fall through to defaults
+    // corrupt data — fall through to defaults
   }
   return LogicV7.defaultRules();
 }

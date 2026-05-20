@@ -77,10 +77,12 @@ export function makeRule(condition, comparator, value, action) {
 
 // Attack-oriented baseline: use the skill whenever it is off cooldown,
 // otherwise trade blows with adjacent enemies, otherwise close the gap.
+// Ids are fixed so the default set is identical across calls — the game
+// rebuilds it every turn and rule-fire stats are keyed by id.
 export function defaultRules() {
   return [
-    makeRule('skill_ready', 'gte', 0, 'use_skill'),
-    makeRule('enemy_adjacent', 'gte', 0, 'basic_attack'),
-    makeRule('always', 'gte', 0, 'advance')
+    { id: 'default-skill-ready', condition: 'skill_ready', comparator: 'gte', value: 0, action: 'use_skill' },
+    { id: 'default-enemy-adjacent', condition: 'enemy_adjacent', comparator: 'gte', value: 0, action: 'basic_attack' },
+    { id: 'default-advance', condition: 'always', comparator: 'gte', value: 0, action: 'advance' }
   ];
 }

@@ -45,6 +45,24 @@
     "description": "Channels arcane focus. +7 ATK, +2 SPD."
   },
   {
+    "id": "war_hammer",
+    "name": "War Hammer",
+    "slot": "weapon",
+    "rarity": "common",
+    "stats": { "atk": 9 },
+    "minFloor": 3,
+    "description": "Crushing two-hander. +9 ATK."
+  },
+  {
+    "id": "spirit_bow",
+    "name": "Spirit Bow",
+    "slot": "weapon",
+    "rarity": "rare",
+    "stats": { "atk": 7, "spd": 3 },
+    "minFloor": 3,
+    "description": "Whispering longbow. +7 ATK, +3 SPD."
+  },
+  {
     "id": "leather_armor",
     "name": "Leather Armor",
     "slot": "armor",
@@ -72,6 +90,24 @@
     "description": "Sturdy helm. +3 DEF, +8 HP."
   },
   {
+    "id": "scale_mail",
+    "name": "Scale Mail",
+    "slot": "armor",
+    "rarity": "common",
+    "stats": { "def": 9, "hp": 20 },
+    "minFloor": 3,
+    "description": "Overlapping scales. +9 DEF, +20 HP."
+  },
+  {
+    "id": "focus_hood",
+    "name": "Focus Hood",
+    "slot": "armor",
+    "rarity": "common",
+    "stats": { "def": 3, "hp": 6, "spd": 2 },
+    "minFloor": 2,
+    "description": "Light caster's hood. +3 DEF, +6 HP, +2 SPD."
+  },
+  {
     "id": "dragon_plate",
     "name": "Dragon Plate",
     "slot": "armor",
@@ -90,6 +126,15 @@
     "description": "Light at the throat. +3 SPD."
   },
   {
+    "id": "warding_band",
+    "name": "Warding Band",
+    "slot": "accessory",
+    "rarity": "common",
+    "stats": { "def": 4, "hp": 10 },
+    "minFloor": 2,
+    "description": "Engraved band. +4 DEF, +10 HP."
+  },
+  {
     "id": "ring_of_vigor",
     "name": "Ring of Vigor",
     "slot": "accessory",
@@ -106,6 +151,15 @@
     "stats": { "atk": 2, "spd": 2 },
     "minFloor": 3,
     "description": "Edges feel favoured. +2 ATK, +2 SPD."
+  },
+  {
+    "id": "kings_crown",
+    "name": "Crown of Kings",
+    "slot": "accessory",
+    "rarity": "epic",
+    "stats": { "atk": 4, "def": 4, "hp": 18, "spd": 2 },
+    "minFloor": 4,
+    "description": "Crown of forgotten kings. +4 ATK, +4 DEF, +18 HP, +2 SPD."
   },
   {
     "id": "potion_minor",

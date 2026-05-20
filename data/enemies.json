@@ -66,5 +66,62 @@
       { "itemId": "ring_of_vigor", "chance": 0.15 }
     ],
     "description": "Treasure-shaped predator. Rare but lucrative."
+  },
+  {
+    "id": "skeleton",
+    "name": "Skeleton",
+    "glyph": "k",
+    "minFloor": 2,
+    "baseStats": { "hp": 26, "atk": 9, "def": 5, "spd": 5 },
+    "aiHint": "chase",
+    "drop": [
+      { "itemId": "potion_minor", "chance": 0.22 },
+      { "itemId": "short_sword", "chance": 0.06 },
+      { "itemId": "warding_band", "chance": 0.05 }
+    ],
+    "description": "Rattling undead soldier. A steady, balanced threat."
+  },
+  {
+    "id": "wraith",
+    "name": "Wraith",
+    "glyph": "w",
+    "minFloor": 3,
+    "baseStats": { "hp": 24, "atk": 13, "def": 3, "spd": 9 },
+    "aiHint": "fast",
+    "drop": [
+      { "itemId": "ether", "chance": 0.25 },
+      { "itemId": "amulet_swift", "chance": 0.07 },
+      { "itemId": "spirit_bow", "chance": 0.05 }
+    ],
+    "description": "Fragile spectre that strikes fast and hard."
+  },
+  {
+    "id": "golem",
+    "name": "Stone Golem",
+    "glyph": "G",
+    "minFloor": 3,
+    "baseStats": { "hp": 46, "atk": 11, "def": 13, "spd": 2 },
+    "aiHint": "chase",
+    "drop": [
+      { "itemId": "iron_helm", "chance": 0.12 },
+      { "itemId": "scale_mail", "chance": 0.08 },
+      { "itemId": "war_hammer", "chance": 0.06 }
+    ],
+    "description": "Animated stone. Crushingly tough to chip down."
+  },
+  {
+    "id": "troll",
+    "name": "Cave Troll",
+    "glyph": "T",
+    "minFloor": 4,
+    "baseStats": { "hp": 56, "atk": 15, "def": 6, "spd": 3 },
+    "aiHint": "regen",
+    "regen": 4,
+    "drop": [
+      { "itemId": "potion_major", "chance": 0.4 },
+      { "itemId": "dragon_plate", "chance": 0.1 },
+      { "itemId": "kings_crown", "chance": 0.05 }
+    ],
+    "description": "Hulking brute that regenerates quickly. A late-floor wall."
   }
 ]

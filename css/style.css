@@ -660,3 +660,17 @@ footer {
   background: #7f1d1d;
   color: #ffffff;
 }
+
+/* v10 build origin panel */
+.origin-desc {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+  margin: 6px 0;
+  line-height: 1.5;
+}
+.origin-stats {
+  font-size: 0.9rem;
+  color: #7dd3fc;
+  font-weight: 600;
+  margin: 6px 0 0;
+}

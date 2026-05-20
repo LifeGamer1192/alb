@@ -2,7 +2,43 @@
   {
     "id": "sun",
     "name": "Sun God",
-    "description": "光の力で味方を強化する神",
+    "description": "光の力で味方を強化する神。攻防をともに底上げする。",
     "bonus": { "atk": 2, "def": 1 }
+  },
+  {
+    "id": "moon",
+    "name": "Moon Goddess",
+    "description": "夜陰に紛れて素早さを授ける月の女神。",
+    "bonus": { "spd": 2, "def": 1 }
+  },
+  {
+    "id": "warlord",
+    "name": "War God",
+    "description": "戦場の猛りを与える戦神。攻撃に大きく偏る。",
+    "bonus": { "atk": 4, "spd": 1 }
+  },
+  {
+    "id": "earth",
+    "name": "Earth Mother",
+    "description": "大地の恵みで生命力を高める母神。",
+    "bonus": { "hp": 28, "def": 2 }
+  },
+  {
+    "id": "tide",
+    "name": "Tide Lord",
+    "description": "満ち引きを司り、生命と機敏さを授ける海神。",
+    "bonus": { "hp": 14, "spd": 2 }
+  },
+  {
+    "id": "forge",
+    "name": "Forge God",
+    "description": "鋼を鍛える炉の神。堅さと鋭さを与える。",
+    "bonus": { "atk": 2, "def": 3 }
+  },
+  {
+    "id": "fate",
+    "name": "Fate Weaver",
+    "description": "運命を織り、全ての力を少しずつ高める神。",
+    "bonus": { "hp": 10, "atk": 1, "def": 1, "spd": 1 }
   }
 ]

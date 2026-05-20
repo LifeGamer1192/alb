@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALB Dungeon Simulation (v10)</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="page page-wide">
+    <header>
+      <h1>ALB — Dungeon (v10)</h1>
+      <nav class="page-nav">
+        <a href="build.html">Build</a> ·
+        <a href="logic.html">Logic</a> ·
+        <a href="status.html">Status</a> ·
+        <a href="inventory.html">Inventory</a> ·
+        <a href="log.html">Log</a> ·
+        <a href="history.html">History</a> ·
+        <a href="../index.html">Home</a>
+      </nav>
+    </header>
+    <main>
+      <section class="card">
+        <h2>Dungeon</h2>
+        <p>5-floor run with rooms+corridors. Every turn is decided by your <a href="logic.html">logic rules</a>. Finished runs are saved to your <a href="history.html">run history</a>.</p>
+        <div class="button-row">
+          <button id="generate-button">New Run</button>
+          <button id="simulate-button" type="button">Advance Turn</button>
+          <div id="auto-run-controls" class="auto-run"></div>
+        </div>
+      </section>
+      <section class="card">
+        <h2>Floor View</h2>
+        <div class="map-wrap">
+          <div id="map-root" class="dungeon-grid"></div>
+          <div id="fx-layer" class="fx-layer"></div>
+        </div>
+        <div class="legend-list">
+          <div class="legend-item"><span class="tile tile-player legend-mark"></span> Player</div>
+          <div class="legend-item"><span class="tile tile-enemy legend-mark"></span> Enemy</div>
+          <div class="legend-item"><span class="tile tile-stairs legend-mark"></span> Stairs</div>
+          <div class="legend-item"><span class="tile tile-treasure legend-mark"></span> Treasure</div>
+          <div class="legend-item"><span class="tile tile-path legend-mark"></span> Path</div>
+          <div class="legend-item"><span class="tile tile-floor legend-mark"></span> Floor</div>
+          <div class="legend-item"><span class="tile tile-wall legend-mark"></span> Wall</div>
+        </div>
+      </section>
+      <section class="card" id="map-info"></section>
+      <section class="card" id="logic-info"></section>
+    </main>
+    <script src="../../js/back.js"></script>
+    <script type="module" src="../../js/game-v9.js"></script>
+  </div>
+</body>
+</html>

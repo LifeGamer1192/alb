@@ -2,7 +2,43 @@
   {
     "id": "northern",
     "name": "Northland",
-    "description": "冷たい大地の戦士たち",
+    "description": "冷たい大地の戦士たち。粘り強く守りに長ける。",
     "baseStats": { "hp": 110, "atk": 18, "def": 12, "spd": 4 }
+  },
+  {
+    "id": "dunefolk",
+    "name": "Dunefolk",
+    "description": "灼熱の砂漠を渡る隊商の民。攻守の均衡と機動力を備える。",
+    "baseStats": { "hp": 92, "atk": 19, "def": 8, "spd": 9 }
+  },
+  {
+    "id": "sylvan",
+    "name": "Sylvan",
+    "description": "深い森と共に生きる狩人たち。身軽さに秀でる。",
+    "baseStats": { "hp": 84, "atk": 16, "def": 9, "spd": 12 }
+  },
+  {
+    "id": "highland",
+    "name": "Highland",
+    "description": "険しい山岳の守り手。鈍重だが鉄壁の防御を誇る。",
+    "baseStats": { "hp": 122, "atk": 16, "def": 16, "spd": 3 }
+  },
+  {
+    "id": "tideborn",
+    "name": "Tideborn",
+    "description": "荒海を生き抜く島嶼の民。あらゆる面で堅実。",
+    "baseStats": { "hp": 96, "atk": 20, "def": 10, "spd": 7 }
+  },
+  {
+    "id": "emberkin",
+    "name": "Emberkin",
+    "description": "火山の麓で鍛えられた者たち。守りを捨て攻撃に全てを賭ける。",
+    "baseStats": { "hp": 78, "atk": 25, "def": 6, "spd": 6 }
+  },
+  {
+    "id": "starwise",
+    "name": "Starwise",
+    "description": "星を読む遊牧の賢人。素早く鋭い一撃を得意とする。",
+    "baseStats": { "hp": 88, "atk": 21, "def": 9, "spd": 10 }
   }
 ]

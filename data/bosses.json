@@ -1,0 +1,68 @@
+[
+  {
+    "id": "boss_warlord",
+    "name": "Goblin Warlord",
+    "glyph": "W",
+    "tier": "floor",
+    "baseStats": { "hp": 44, "atk": 12, "def": 5, "spd": 5 },
+    "aiHint": "chase",
+    "drop": [
+      { "itemId": "short_sword", "chance": 0.5 },
+      { "itemId": "ring_of_vigor", "chance": 0.3 }
+    ],
+    "description": "An elite that rallies the floor's lesser foes."
+  },
+  {
+    "id": "boss_chieftain",
+    "name": "Orc Chieftain",
+    "glyph": "U",
+    "tier": "floor",
+    "baseStats": { "hp": 56, "atk": 14, "def": 7, "spd": 3 },
+    "aiHint": "chase",
+    "drop": [
+      { "itemId": "battle_axe", "chance": 0.5 },
+      { "itemId": "chainmail", "chance": 0.3 }
+    ],
+    "description": "A hulking warleader. Slow but punishing."
+  },
+  {
+    "id": "boss_wraithlord",
+    "name": "Wraith Lord",
+    "glyph": "Y",
+    "tier": "floor",
+    "baseStats": { "hp": 40, "atk": 16, "def": 4, "spd": 8 },
+    "aiHint": "fast",
+    "drop": [
+      { "itemId": "spirit_bow", "chance": 0.4 },
+      { "itemId": "amulet_swift", "chance": 0.3 }
+    ],
+    "description": "A swift, fragile spectre that hits hard and fast."
+  },
+  {
+    "id": "boss_sentinel",
+    "name": "Iron Sentinel",
+    "glyph": "H",
+    "tier": "floor",
+    "baseStats": { "hp": 60, "atk": 12, "def": 12, "spd": 2 },
+    "aiHint": "chase",
+    "drop": [
+      { "itemId": "scale_mail", "chance": 0.5 },
+      { "itemId": "war_hammer", "chance": 0.3 }
+    ],
+    "description": "An armoured construct. A wall of metal to chip down."
+  },
+  {
+    "id": "boss_tyrant",
+    "name": "Dungeon Tyrant",
+    "glyph": "X",
+    "tier": "final",
+    "baseStats": { "hp": 130, "atk": 21, "def": 11, "spd": 5 },
+    "aiHint": "chase",
+    "drop": [
+      { "itemId": "kings_crown", "chance": 0.8 },
+      { "itemId": "dragon_plate", "chance": 0.5 },
+      { "itemId": "elixir", "chance": 0.5 }
+    ],
+    "description": "The dungeon's master, guarding the final floor."
+  }
+]

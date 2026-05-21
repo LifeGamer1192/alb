@@ -706,3 +706,49 @@ footer {
   color: #fca5a5;
   border: 1px solid #7f1d1d;
 }
+
+/* v13 boss tiles + combat-log juice */
+.tile-boss {
+  background: #a21caf;
+  color: #ffffff;
+  box-shadow: 0 0 7px 1px rgba(217, 70, 239, 0.85);
+}
+.tile-boss.legend-mark {
+  box-shadow: none;
+}
+.event-log li.evt-boss {
+  color: #e879f9;
+  font-weight: 800;
+}
+.event-log li.evt-chain {
+  color: #fcd34d;
+  font-weight: 700;
+}
+.event-log li.evt-fever {
+  background: rgba(249, 115, 22, 0.14);
+}
+.event-log li.log-new {
+  animation: log-pop 0.5s ease-out;
+}
+@keyframes log-pop {
+  0% { opacity: 0; transform: translateX(-14px); background: rgba(125, 211, 252, 0.3); }
+  100% { opacity: 1; transform: translateX(0); background: transparent; }
+}
+.highlight-band {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0 10px;
+}
+.highlight-item {
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #cbd5f5;
+}
+.highlight-item.evt-fever { color: #fb923c; border-color: #b45309; }
+.highlight-item.evt-boss { color: #e879f9; border-color: #a21caf; }
+.highlight-item.evt-defeat { color: #fb7185; border-color: #7f1d1d; }

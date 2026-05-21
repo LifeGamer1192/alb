@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALB Character Build (v13)</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Character Build</h1>
+      <nav class="page-nav">
+        <a href="game.html">Game</a> ·
+        <a href="logic.html">Logic</a> ·
+        <a href="status.html">Status</a> ·
+        <a href="inventory.html">Inventory</a> ·
+        <a href="log.html">Log</a> ·
+        <a href="history.html">History</a> ·
+        <a href="../index.html">Home</a>
+      </nav>
+    </header>
+    <main>
+      <section class="card">
+        <h2>Build Your Character</h2>
+        <form id="build-form">
+          <label>
+            Culture
+            <select id="culture-select"></select>
+          </label>
+          <label>
+            Class
+            <select id="class-select"></select>
+          </label>
+          <label>
+            Deity
+            <select id="god-select"></select>
+          </label>
+          <label>
+            Skill 1
+            <select id="skill-1-select"></select>
+          </label>
+          <label>
+            Skill 2
+            <select id="skill-2-select"></select>
+          </label>
+          <label>
+            Skill 3
+            <select id="skill-3-select"></select>
+          </label>
+          <button type="submit">Create Character</button>
+        </form>
+      </section>
+      <section class="card">
+        <h2>Origin</h2>
+        <p class="muted">Traits of the selected culture and deity. Pick from 7 of each.</p>
+        <div id="origin-info" class="result-grid"></div>
+      </section>
+      <section class="card" id="build-result">
+        <h2>Build Result</h2>
+        <div class="result-grid">
+          <div>
+            <h3>Status</h3>
+            <ul id="stats-list"></ul>
+          </div>
+          <div>
+            <h3>Skill Loadout</h3>
+            <ul id="skills-list"></ul>
+          </div>
+        </div>
+      </section>
+      <p><a href="../index.html" class="back-link">Back to Home</a></p>
+    </main>
+  </div>
+  <script type="module" src="../../js/build-v11.js"></script>
+  <script src="../../js/back.js"></script>
+</body>
+</html>

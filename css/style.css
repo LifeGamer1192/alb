@@ -679,3 +679,30 @@ footer {
 .loadout-line {
   line-height: 1.7;
 }
+
+/* v12 logic editor — compound condition rows */
+.cond-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  border: 1px solid #2b2b3f;
+  border-radius: 8px;
+  background: #1e1e2a;
+}
+.cond-row select,
+.cond-row input {
+  display: inline-block;
+  width: auto;
+  max-width: 220px;
+  margin-top: 0;
+}
+.cond-remove {
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  background: #1e293b;
+  color: #fca5a5;
+  border: 1px solid #7f1d1d;
+}

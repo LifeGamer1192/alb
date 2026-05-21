@@ -674,3 +674,8 @@ footer {
   font-weight: 600;
   margin: 6px 0 0;
 }
+
+/* v11 multi-skill loadout */
+.loadout-line {
+  line-height: 1.7;
+}
